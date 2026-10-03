@@ -1,0 +1,62 @@
+{#
+ # The agenda: the dates to come by month, each a row (_event.html.twig),
+ # the calendar to subscribe to, and the dates gone by folded underneath.
+ # The host's layout1.html.twig gives the chrome; agenda.css the look.
+ #}
+{% extends 'layout1.html.twig' %}
+
+{% block title %}{{ '@agenda.index.title'|trans }}{% endblock %}
+{% block description %}{{ '@agenda.index.description'|trans }}{% endblock %}
+
+{# The stylesheets block is the one the host's <head> holds: the JSON feed announced there too, for whoever reads the page's links. #}
+{% block stylesheets %}{{ parent() }}<link rel="stylesheet" href="{{ asset('bundles/agenda/css/agenda.css') }}">
+<link rel="alternate" type="application/json" href="{{ url('agenda_json') }}" title="{{ '@agenda.index.title'|trans }} (JSON)">{% endblock %}
+
+{% block content %}
+<section class="agenda agenda-index">
+    <header class="agenda-head">
+        <div>
+            <p class="agenda-eyebrow">{{ '@agenda.index.eyebrow'|trans }}</p>
+            <h1>{{ '@agenda.index.title'|trans }}</h1>
+            <p class="agenda-lead">{{ '@agenda.index.lead'|trans }}</p>
+        </div>
+        <p class="agenda-subscribe">
+            <a class="agenda-button is-ghost" href="{{ agenda_webcal_url() }}"><i class="fa-regular fa-calendar-plus" aria-hidden="true"></i> {{ '@agenda.index.subscribe'|trans }}</a>
+            <a class="agenda-small" href="{{ path('agenda_feed') }}" download>{{ '@agenda.index.download'|trans }}</a>
+        </p>
+    </header>
+
+    {% include '@Agenda/client/_today.html.twig' %}
+
+    {% if months %}
+        {% for group in months %}
+        <section class="agenda-month" aria-labelledby="agenda-month-{{ group.month|date('Y-m', false) }}">
+            <h2 id="agenda-month-{{ group.month|date('Y-m', false) }}">{{ group.month|format_datetime(pattern: 'LLLL yyyy', timezone: false)|capitalize }}</h2>
+            {% for event in group.events %}{% include '@Agenda/client/_event.html.twig' with {past: false} %}{% endfor %}
+        </section>
+        {% endfor %}
+    {% else %}
+    <p class="agenda-empty">{{ '@agenda.index.empty'|trans }}</p>
+    {% endif %}
+
+    {% if show_past and past %}
+    <details class="agenda-past" id="past" {{ past_open ? 'open' }}>
+        <summary>{{ '@agenda.index.past'|trans }}</summary>
+        {% for group in past_months %}
+        <section class="agenda-month">
+            <h2>{{ group.month|format_datetime(pattern: 'LLLL yyyy', timezone: false)|capitalize }}</h2>
+            {% for event in group.events %}{% include '@Agenda/client/_event.html.twig' with {past: true} %}{% endfor %}
+        </section>
+        {% endfor %}
+
+        {% if pages > 1 %}
+        <nav class="agenda-pager" aria-label="{{ '@agenda.index.pages'|trans }}">
+            {% if page > 1 %}<a rel="prev" href="{{ path('agenda_index', {past: 1, page: page - 1 > 1 ? page - 1 : null}) }}#past">‹ {{ '@agenda.index.newer'|trans }}</a>{% else %}<span></span>{% endif %}
+            <span>{{ page }} / {{ pages }}</span>
+            {% if page < pages %}<a rel="next" href="{{ path('agenda_index', {past: 1, page: page + 1}) }}#past">{{ '@agenda.index.older'|trans }} ›</a>{% else %}<span></span>{% endif %}
+        </nav>
+        {% endif %}
+    </details>
+    {% endif %}
+</section>
+{% endblock %}

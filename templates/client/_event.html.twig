@@ -1,0 +1,27 @@
+{# A date on the list: the day apart, then the title, where, with whom, the role, the tickets and the calendar links. `past` drops the tickets. #}
+{% set start = event.startsAtLocal %}
+{% set past = past|default(false) %}
+<article class="agenda-event{{ event.cancelled ? ' is-cancelled' }}{{ past ? ' is-past' }}{{ not past and event.today ? ' is-today' }}">
+    <a class="agenda-date" href="{{ path('agenda_event', {slug: event.slug}) }}" aria-hidden="true" tabindex="-1">
+        <span class="agenda-weekday">{{ start|format_datetime(pattern: 'EEE', timezone: false) }}</span>
+        <span class="agenda-day">{{ start|format_datetime(pattern: 'd', timezone: false) }}</span>
+        <span class="agenda-monthname">{{ start|format_datetime(pattern: 'LLL', timezone: false) }}</span>
+    </a>
+    <div class="agenda-body">
+        <p class="agenda-meta">
+            <time datetime="{{ event.allDay ? start|date('Y-m-d', false) : start|date('c', false) }}">{% if event.allDay %}{% if event.multiDay %}{{ '@agenda.event.until'|trans({date: event.endsAtLocal|format_date('long', timezone: false)}) }}{% else %}{{ '@agenda.event.all_day'|trans }}{% endif %}{% else %}{{ start|format_time('short', timezone: false) }}{% endif %}</time>
+            {% if not past and event.today %}<span class="agenda-pill is-today">{{ event.tonight ? '@agenda.today.tonight'|trans : '@agenda.today.today'|trans }}</span>{% endif %}
+            {% if event.role != 'other' %}<span class="agenda-pill">{{ event.role|agenda_role_label }}</span>{% endif %}
+            {% if event.cancelled %}<span class="agenda-pill is-cancelled">{{ '@agenda.event.cancelled'|trans }}</span>{% endif %}
+        </p>
+        <h3><a href="{{ path('agenda_event', {slug: event.slug}) }}">{{ event.title }}</a></h3>
+        {% if event.venue %}<p class="agenda-where">{{ event.venue.name }}{% if event.venue.city %} <span aria-hidden="true">·</span> {{ event.venue.city }}{% endif %}</p>{% endif %}
+        {% if event.ensemble or event.conductor %}
+        <p class="agenda-with">{{ event.ensemble }}{% if event.ensemble and event.conductor %} <span aria-hidden="true">·</span> {% endif %}{% if event.conductor %}{{ '@agenda.event.conducted_by'|trans({name: event.conductor}) }}{% endif %}</p>
+        {% endif %}
+        {% if not past and not event.cancelled %}{% include '@Agenda/client/_calendar_links.html.twig' with {small: true} %}{% endif %}
+    </div>
+    {% if not past and not event.cancelled and event.ticketsUrl %}
+    <div class="agenda-actions"><a class="agenda-button" href="{{ event.ticketsUrl }}" target="_blank" rel="noopener">{{ '@agenda.event.tickets'|trans }}</a></div>
+    {% endif %}
+</article>

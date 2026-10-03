@@ -1,0 +1,89 @@
+{# One date: its cover, when (in the hall's timezone), where, with whom, the programme, the tickets, the calendar links - and the schema.org MusicEvent for the search engines. #}
+{% extends 'layout1.html.twig' %}
+
+{% set start = event.startsAtLocal %}
+{% set end = event.endsAtLocal %}
+
+{% block title %}{{ event.title }}{% endblock %}
+{% block description %}{{ event.excerpt ?? (start|format_date('full', timezone: false) ~ (event.venue ? ' · ' ~ event.venue.label : '')) }}{% endblock %}
+
+{% block stylesheets %}{{ parent() }}<link rel="stylesheet" href="{{ asset('bundles/agenda/css/agenda.css') }}">{% endblock %}
+
+{% block content %}
+<article class="agenda agenda-page{{ event.cancelled ? ' is-cancelled' }}">
+    <p class="agenda-back"><a href="{{ path('agenda_index') }}">‹ {{ '@agenda.event.back'|trans }}</a></p>
+    <header class="agenda-page-head">
+        <p class="agenda-eyebrow">{{ event.role != 'other' ? event.role|agenda_role_label : '@agenda.index.eyebrow'|trans }}</p>
+        <h1>{{ event.title }}</h1>
+        {% if event.headline %}<p class="agenda-lead">{{ event.headline }}</p>{% endif %}
+        {% if event.cancelled %}<p class="agenda-notice" role="status">{{ '@agenda.event.cancelled_notice'|trans }}</p>{% endif %}
+    </header>
+
+    {% if event.coverUrl %}<figure class="agenda-cover"><img src="{{ event.coverUrl }}" alt=""></figure>{% endif %}
+
+    <dl class="agenda-facts">
+        <div>
+            <dt>{{ '@agenda.event.when'|trans }}</dt>
+            <dd>
+                {% if event.allDay %}
+                    {% if event.multiDay %}{{ '@agenda.event.range'|trans({from: start|format_date('long', timezone: false), to: end|format_date('long', timezone: false)}) }}{% else %}<time class="agenda-fulldate" datetime="{{ start|date('Y-m-d', false) }}">{{ start|format_date('full', timezone: false) }}</time>{% endif %}
+                {% else %}
+                    <time class="agenda-fulldate" datetime="{{ start|date('c', false) }}">{{ start|format_date('full', timezone: false) }}</time><br>
+                    {{ start|format_time('short', timezone: false) }}{% if end and not event.multiDay %} – {{ end|format_time('short', timezone: false) }}{% endif %}
+                    <small class="agenda-tz">{{ start|format_datetime(pattern: 'zzzz', timezone: false) }}</small>
+                    {% if event.multiDay %}<br>{{ '@agenda.event.until'|trans({date: end|format_date('long', timezone: false)}) }}{% endif %}
+                {% endif %}
+            </dd>
+        </div>
+        {% if event.venue %}
+        {% set venue = event.venue %}
+        <div>
+            <dt>{{ '@agenda.event.where'|trans }}</dt>
+            <dd>
+                <strong>{% if venue.website %}<a href="{{ venue.website }}" target="_blank" rel="noopener">{{ venue.name }}</a>{% else %}{{ venue.name }}{% endif %}</strong>{% if venue.hall %}, {{ venue.hall }}{% endif %}<br>
+                {% if venue.address %}{{ venue.address }}<br>{% endif %}
+                {{ venue.postcode }} {{ venue.city }}{% if venue.country %}, {{ venue.country|country_name }}{% endif %}
+                {% if venue.mapLink %}<br><a class="agenda-small" href="{{ venue.mapLink }}" target="_blank" rel="noopener">{{ '@agenda.event.map'|trans }}</a>{% endif %}
+            </dd>
+        </div>
+        {% endif %}
+        {% if event.ensemble or event.conductor %}
+        <div>
+            <dt>{{ '@agenda.event.with'|trans }}</dt>
+            <dd>{{ event.ensemble }}{% if event.ensemble and event.conductor %}<br>{% endif %}{% if event.conductor %}{{ '@agenda.event.conducted_by'|trans({name: event.conductor}) }}{% endif %}</dd>
+        </div>
+        {% endif %}
+    </dl>
+
+    {% if not event.cancelled and (event.ticketsUrl or event.upcoming) %}
+    <div class="agenda-cta">
+        {% if event.ticketsUrl and event.upcoming %}<a class="agenda-button" href="{{ event.ticketsUrl }}" target="_blank" rel="noopener">{{ '@agenda.event.tickets'|trans }}</a>{% endif %}
+        {% if event.upcoming %}{% include '@Agenda/client/_calendar_links.html.twig' %}{% endif %}
+    </div>
+    {% endif %}
+
+    {% if event.programmeWorks %}
+    <section class="agenda-section">
+        <h2>{{ '@agenda.event.programme'|trans }}</h2>
+        <ul class="agenda-programme">
+            {% for work in event.programmeWorks %}<li>{% if work.composer %}<span class="agenda-composer">{{ work.composer }}</span> {% endif %}<span class="agenda-work">{{ work.work }}</span></li>{% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+
+    {% if event.performerNames %}
+    <section class="agenda-section">
+        <h2>{{ '@agenda.event.performers'|trans }}</h2>
+        <ul class="agenda-performers">
+            {% for performer in event.performerNames %}<li><span>{{ performer.name }}</span>{% if performer.part %} <small>{{ performer.part }}</small>{% endif %}</li>{% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+
+    {% if event.content %}<div class="agenda-prose">{{ event.content|wysiwyg|raw }}</div>{% endif %}
+
+    {% if event.eventUrl %}<p class="agenda-organiser"><a href="{{ event.eventUrl }}" target="_blank" rel="noopener">{{ '@agenda.event.organiser'|trans }} ›</a></p>{% endif %}
+
+    {% if jsonld %}<script type="application/ld+json">{{ jsonld|json_encode(constant('JSON_UNESCAPED_SLASHES') b-or constant('JSON_UNESCAPED_UNICODE') b-or constant('JSON_HEX_TAG'))|raw }}</script>{% endif %}
+</article>
+{% endblock %}

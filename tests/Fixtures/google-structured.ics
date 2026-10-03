@@ -1,0 +1,43 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Concerts
+X-WR-TIMEZONE:Europe/Paris
+X-WR-CALDESC:Les concerts\, tenus depuis le téléphone
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Berlin:20270212T200000
+DTEND;TZID=Europe/Berlin:20270212T220000
+DTSTAMP:20261003T101500Z
+UID:0a1b2c3d4e5f6g7h8i9j@google.com
+CREATED:20261001T090000Z
+DESCRIPTION:Orchestre : NDR Elbphilharmonie Orchester\nChef : Vasily Petren
+ ko\nRôle : soliste\nBillets : https://www.elbphilharmonie.de/fr/programme
+ /perspectives-concertantes/12345\nProgramme :\nGlière — Concerto pour h
+ arpe op. 74\nDebussy — Danses sacrée et profane
+LAST-MODIFIED:20261002T181200Z
+LOCATION:Elbphilharmonie\, Platz der Deutschen Einheit 1\, 20457 Hamburg\, 
+ Allemagne
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Perspectives concertantes — Glière (agenda test)
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Paris:20270320T183000
+DTEND;TZID=Europe/Paris:20270320T200000
+DTSTAMP:20261003T101500Z
+UID:9z8y7x6w5v4u3t2s1r0q@google.com
+DESCRIPTION:<b>Avec :</b> Quatuor Ébène\, Anna Meyer\, harpe<br>Rôle : m
+ usique de chambre<br><br>Programme :<br>Ravel — Introduction et allegro<
+ br>Debussy — Sonate pour flûte\, alto et harpe<br><br>Billets : <a href
+ ="https://www.google.com/url?q=https://www.philharmoniedeparis.fr/fr/activ
+ ite/12345&amp;sa=D&amp;source=calendar">ici</a>
+LAST-MODIFIED:20261002T181500Z
+LOCATION:Philharmonie de Paris\, 221 Avenue Jean Jaurès\, 75019 Paris\, Fr
+ ance
+STATUS:CONFIRMED
+SUMMARY:Musique de chambre à la Philharmonie (agenda test)
+END:VEVENT
+END:VCALENDAR

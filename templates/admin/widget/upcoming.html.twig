@@ -1,0 +1,31 @@
+{# The next dates (Base\Agenda\Admin\Widget\UpcomingEventsWidgetType). #}
+<div class="analytics-card card agenda-upcoming">
+    <div class="analytics-card-header">
+        <h2 class="analytics-card-title">{{ widget.label|trans({}, 'admin') }}</h2>
+    </div>
+    <div class="agenda-upcoming-body">
+        <a class="agenda-upcoming-count" href="{{ path('admin_crud_events_index') }}">
+            <strong>{{ count }}</strong>
+            <span>{{ '@agenda.admin.widget.upcoming'|trans({count: count}) }}</span>
+        </a>
+        {% if events %}
+        <ul class="agenda-upcoming-list">
+            {% for event in events %}
+            <li{{ event.cancelled ? ' class="is-cancelled"' }}><a href="{{ path('admin_crud_events_detail', {entityId: event.id}) }}"><b>{{ event.startsAtLocal|format_datetime('medium', event.allDay ? 'none' : 'short', timezone: false) }}</b> · {{ event.title }}{% if event.venue %}<br><small>{{ event.venue.label }}</small>{% endif %}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="agenda-upcoming-empty">{{ '@agenda.admin.widget.none'|trans }}</p>
+        {% endif %}
+    </div>
+</div>
+<style>
+    .agenda-upcoming-body { display: grid; gap: .75rem; padding: 0 1rem 1rem; }
+    .agenda-upcoming-count { display: grid; gap: .2rem; padding: .9rem 1rem; border-radius: .75rem; background: rgba(127,127,127,.08); color: inherit; text-decoration: none; }
+    .agenda-upcoming-count strong { font-size: 1.6rem; line-height: 1.1; }
+    .agenda-upcoming-count span { font-size: .8rem; opacity: .75; }
+    .agenda-upcoming-list { margin: 0; padding: 0; list-style: none; display: grid; gap: .4rem; font-size: .85rem; }
+    .agenda-upcoming-list a { color: inherit; text-decoration: none; }
+    .agenda-upcoming-list .is-cancelled a { text-decoration: line-through; opacity: .6; }
+    .agenda-upcoming-empty { margin: 0; font-size: .85rem; opacity: .7; }
+</style>

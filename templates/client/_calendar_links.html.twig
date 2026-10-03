@@ -1,0 +1,5 @@
+{# The two ways to keep a date: Google Calendar's template page, and the .ics any other calendar opens. `small` for the list's rows. #}
+<p class="agenda-calendar{{ small|default(false) ? ' is-small' }}">
+    <a href="{{ agenda_google_url(event) }}" target="_blank" rel="noopener nofollow"><i class="fa-brands fa-google" aria-hidden="true"></i> {{ '@agenda.calendar.google'|trans }}</a>
+    <a href="{{ agenda_ics_url(event) }}" download><i class="fa-regular fa-calendar-plus" aria-hidden="true"></i> {{ '@agenda.calendar.ics'|trans }}</a>
+</p>

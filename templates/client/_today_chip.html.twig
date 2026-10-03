@@ -1,0 +1,21 @@
+{#
+ # Today's concert in one line, for a home page's first screen (over a
+ # picture): "Tonight · 20:00 · the hall, the orchestra", "On stage" while it
+ # plays. Nothing on a day without a date.
+ #   {% include '@Agenda/client/_today_chip.html.twig' %}
+ #}
+{% set dates = today_dates ?? agenda_today() %}
+{% if dates %}
+<div class="agenda-chips">
+    {% for event in dates %}
+    {% set start = event.startsAtLocal %}
+    <a class="agenda-chip{{ event.onStage ? ' is-live' }}" href="{{ path('agenda_event', {slug: event.slug}) }}">
+        <span class="agenda-today-dot" aria-hidden="true"></span>
+        <strong>{{ event.onStage ? '@agenda.today.live'|trans : (event.tonight ? '@agenda.today.tonight'|trans : '@agenda.today.today'|trans) }}</strong>
+        {% if not event.allDay %}<time datetime="{{ start|date('c', false) }}">{{ start|format_time('short', timezone: false) }}</time>{% endif %}
+        <span>{{ event.venue ? event.venue.name : event.title }}{% if event.ensemble %} · {{ event.ensemble }}{% endif %}{% if event.role != 'other' %} · {{ event.role|agenda_role_label }}{% endif %}</span>
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+    </a>
+    {% endfor %}
+</div>
+{% endif %}

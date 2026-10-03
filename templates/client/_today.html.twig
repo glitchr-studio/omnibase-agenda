@@ -1,0 +1,33 @@
+{#
+ # Today's concert, before anything else: "Tonight", the hour where it is
+ # played, the hall and its city, the artist's part that evening (soloist,
+ # concertmaster...), the orchestra and its conductor, the tickets. "On stage
+ # now" while it plays. Nothing at all on a day without a date.
+ #   {% include '@Agenda/client/_today.html.twig' %}
+ #}
+{% set dates = today_dates ?? agenda_today() %}
+{% if dates %}
+<aside class="agenda-today" aria-label="{{ '@agenda.today.label'|trans }}">
+    {% for event in dates %}
+    {% set start = event.startsAtLocal %}
+    <div class="agenda-today-item{{ event.onStage ? ' is-live' }}">
+        <p class="agenda-today-when">
+            <span class="agenda-today-dot" aria-hidden="true"></span>
+            {{ event.onStage ? '@agenda.today.live'|trans : (event.tonight ? '@agenda.today.tonight'|trans : '@agenda.today.today'|trans) }}
+            {% if not event.allDay %}<time datetime="{{ start|date('c', false) }}">{{ start|format_time('short', timezone: false) }}</time>{% endif %}
+        </p>
+        <p class="agenda-today-what">
+            <a href="{{ path('agenda_event', {slug: event.slug}) }}">{{ event.title }}</a>
+            {% if event.venue %}<span class="agenda-today-where">{{ event.venue.name }}{% if event.venue.city and event.venue.city != event.venue.name %}, {{ event.venue.city }}{% endif %}</span>{% endif %}
+        </p>
+        {# The artist's own part that evening, in front: what a visitor came for. #}
+        <p class="agenda-today-part">
+            {% if event.role != 'other' %}<strong>{{ event.role|agenda_role_label }}</strong>{% endif %}
+            {% if event.ensemble %}<span>{{ event.ensemble }}</span>{% endif %}
+            {% if event.conductor %}<span>{{ '@agenda.event.conducted_by'|trans({name: event.conductor}) }}</span>{% endif %}
+        </p>
+        {% if event.ticketsUrl and not event.onStage %}<a class="agenda-button" href="{{ event.ticketsUrl }}" target="_blank" rel="noopener">{{ '@agenda.event.tickets'|trans }}</a>{% endif %}
+    </div>
+    {% endfor %}
+</aside>
+{% endif %}

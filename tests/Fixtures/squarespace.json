@@ -1,0 +1,176 @@
+{
+ "collection": {
+  "title": "Performances",
+  "fullUrl": "/performances"
+ },
+ "pagination": {
+  "nextPage": true,
+  "nextPageOffset": 1771949630575,
+  "nextPageUrl": "/performances?offset=1771949630575",
+  "pageSize": 30
+ },
+ "upcoming": [
+  {
+   "id": "6aa6df513f879725ec9b82a2",
+   "title": "M. Fröst, A. Poga | NDR Elbphilharmonie Orchestra ",
+   "urlId": "m-fujita-c-macelaru-ndr-elbphilharmonie-orchestra-5hakp-9cady",
+   "fullUrl": "/performances/m-fujita-c-macelaru-ndr-elbphilharmonie-orchestra-5hakp-9cady",
+   "sourceUrl": "Peenemünde, Kraftwerk des Museums, Im Kraftwerk",
+   "body": "<div class=\"sqs-layout sqs-grid-12 columns-12\" data-layout-label=\"Post Body\" data-type=\"item\" id=\"item-6aa6df513f879725ec9b82a2\"><div class=\"row sqs-row\"><div class=\"col sqs-col-12 span-12\"><div class=\"sqs-block website-component-block sqs-block-website-component sqs-block-html html-block\" data-block-css=\"[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/9e23cfdc-e869-4f4c-90e3-54bb813542f1_957/website.components.html.styles.css&quot;]\" data-block-scripts=\"[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/9e23cfdc-e869-4f4c-90e3-54bb813542f1_957/website.components.html.visitor.js&quot;]\" data-block-type=\"1337\" data-definition-name=\"website.components.html\" data-sqsp-block=\"text\" data-website-component-id=\"3c72247c05e16b77f07b\" id=\"block-3c72247c05e16b77f07b\"><div class=\"sqs-block-content\"><div class=\"sqs-text-block-container\">\n  \n  <div class=\"sqs-html-content\" data-sqsp-text-block-content><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>NDR Elbphilharmonie Orchestra</strong></p><p class=\"artists without-space\" style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>Andris Poga </strong>Conductor<br><strong>Martin Fröst</strong> Clarinet<br><br><strong>Hugo Alfvén </strong>Midsommarvaka - Schwedische Rhapsodie Nr. 1 op. 19<br><strong>Wolfgang Amadeus Mozart </strong>Konzert für Klarinette und Orchester A-Dur KV 622<br><strong>Peter Tschaikowsky </strong>Manfred-Sinfonie h-Moll op. 58</p></div>\n\n\n  \n<style id=\"container-styles\">#block-3c72247c05e16b77f07b {\n    \n    \n    \n  }\n\n  #block-3c72247c05e16b77f07b .sqs-html-content {\n    \n    }\n\n  #block-3c72247c05e16b77f07b {\n      mix-blend-mode: var(--tweak-text-block-blend\n  );\n      border-radius: var(--tweak-text-block-radius);\n  }\n\n  \n  \n\n\n\n  \n  \n\n  \n</style>\n\n<style id=\"override-container-styles\">\n    @media screen and (max-width: 767px) {\n          \n            \n\n#block-3c72247c05e16b77f07b {\n            \n            }\n        }\n    \n  \n    @media screen and (max-width: 767px) {\n          #block-3c72247c05e16b77f07b .sqs-html-content {\n            \n            }\n        }\n    \n  @media screen and (max-width: 767px) {\n          \n          \n\n          \n          \n          \n        }</style>\n<style class=\"transform-overrides-vars\">\n  \n</style>\n\n\n\n\n</div>\n</div></div></div></div></div>",
+   "excerpt": "",
+   "location": {
+    "mapZoom": 12.0,
+    "mapLat": 54.1384187,
+    "mapLng": 13.7653251,
+    "markerLat": 54.1384187,
+    "markerLng": 13.7653251,
+    "addressTitle": "Peenemünde, Kraftwerk des Museums, Im Kraftwerk",
+    "addressLine1": "10 Fährstraße",
+    "addressLine2": "Peenemünde, Mecklenburg-Vorpommern, 17449",
+    "addressCountry": "Allemagne"
+   },
+   "assetUrl": "https://images.squarespace-cdn.com/content/v1/5ca4cc13ab1a6251fbffc7cb/1789321207344-YLI5J9V0ZZRCG7C0FH1P/170106_raetzke_elbphilharmonie_0287_1.jpg__1794x897_q85_crop_subject_location-2774%2C1836_subsampling-2_upscale.jpg",
+   "contentType": "image/jpeg",
+   "structuredContent": {
+    "_type": "CalendarEvent",
+    "startDate": 1791050400825,
+    "endDate": 1791057600825
+   },
+   "startDate": 1791050400825,
+   "endDate": 1791057600825,
+   "addedOn": 1789321257182,
+   "updatedOn": 1789321265701,
+   "recordTypeLabel": "event"
+  },
+  {
+   "id": "6aa857b352d0432878b9aed6",
+   "title": "T. Currentzis | Utopia Orchestra, Seoul ",
+   "urlId": "t-currentzis-utopia-orchestra-paris-ee7at-m5gzc-86yb2-ywc83-52cw8-wlr28-btj8r",
+   "fullUrl": "/performances/t-currentzis-utopia-orchestra-paris-ee7at-m5gzc-86yb2-ywc83-52cw8-wlr28-btj8r",
+   "sourceUrl": "https://www.teodor-currentzis.com/index.php/concerts/mahler-symphony-no-1-shostakovich-piano-concerto-no-2_seoul/",
+   "body": "<div class=\"sqs-layout sqs-grid-12 columns-12\" data-layout-label=\"Post Body\" data-type=\"item\" id=\"item-6aa857b352d0432878b9aed6\"><div class=\"row sqs-row\"><div class=\"col sqs-col-12 span-12\"><div class=\"sqs-block website-component-block sqs-block-website-component sqs-block-html html-block\" data-block-css=\"[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/9e23cfdc-e869-4f4c-90e3-54bb813542f1_957/website.components.html.styles.css&quot;]\" data-block-scripts=\"[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/9e23cfdc-e869-4f4c-90e3-54bb813542f1_957/website.components.html.visitor.js&quot;]\" data-block-type=\"1337\" data-definition-name=\"website.components.html\" data-sqsp-block=\"text\" data-website-component-id=\"9daae846512cc2f655b2\" id=\"block-9daae846512cc2f655b2\"><div class=\"sqs-block-content\"><div class=\"sqs-text-block-container\">\n  \n  <div class=\"sqs-html-content\" data-sqsp-text-block-content><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>Utopia Orchestra</strong></p><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>Teodor Currentzis </strong>Conductor </p><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>Daniel Lozakovich</strong>  Violin<br></p><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"></p><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>Dmitri Shostakovich</strong> Violin Concerto No. 1 in A minor, Op. 77 </p><p style=\"text-align: left; white-space: pre-wrap\" data-rte-preserve-empty=\"true\">&nbsp;</p><p style=\"text-align: left; white-space: pre-wrap\" data-rte-preserve-empty=\"true\"><strong>Igor Stravinsky</strong> The Rite of Spring (Le Sacre du printemps)</p></div>\n\n\n  \n<style id=\"container-styles\">#block-9daae846512cc2f655b2 {\n    \n    \n    \n  }\n\n  #block-9daae846512cc2f655b2 .sqs-html-content {\n    \n    }\n\n  #block-9daae846512cc2f655b2 {\n      mix-blend-mode: var(--tweak-text-block-blend\n  );\n      border-radius: var(--tweak-text-block-radius);\n  }\n\n  \n  \n\n\n\n  \n  \n\n  \n</style>\n\n<style id=\"override-container-styles\">\n    @media screen and (max-width: 767px) {\n          \n            \n\n#block-9daae846512cc2f655b2 {\n            \n            }\n        }\n    \n  \n    @media screen and (max-width: 767px) {\n          #block-9daae846512cc2f655b2 .sqs-html-content {\n            \n            }\n        }\n    \n  @media screen and (max-width: 767px) {\n          \n          \n\n          \n          \n          \n        }</style>\n<style class=\"transform-overrides-vars\">\n  \n</style>\n\n\n\n\n</div>\n</div></div></div></div></div>",
+   "excerpt": "",
+   "location": {
+    "mapZoom": 12.0,
+    "mapLat": 37.549748,
+    "mapLng": 127.1273649,
+    "markerLat": 53.5411182,
+    "markerLng": 9.9853299,
+    "addressTitle": "Lotte Concert Hall",
+    "addressLine1": "300 Olympic-ro, Songpa District, Seoul, Corée du Sud",
+    "addressLine2": "",
+    "addressCountry": ""
+   },
+   "assetUrl": "https://images.squarespace-cdn.com/content/v1/5ca4cc13ab1a6251fbffc7cb/1789417147181-G54V6VJ0IKIS4C31N13K/lotte-concert-hero-2160x1165.webp",
+   "contentType": "image/webp",
+   "structuredContent": {
+    "_type": "CalendarEvent",
+    "startDate": 1794942000158,
+    "endDate": 1795035600158
+   },
+   "startDate": 1794942000158,
+   "endDate": 1795035600158,
+   "addedOn": 1789417482227,
+   "updatedOn": 1789417482407,
+   "recordTypeLabel": "event"
+  },
+  {
+   "id": "6aa8598f6290521487dfddcc",
+   "title": "T. Currentzis | Utopia Orchestra, Taipei",
+   "urlId": "t-currentzis-utopia-orchestra-paris-ee7at-m5gzc-86yb2-ywc83-52cw8-wlr28-zjk78",
+   "fullUrl": "/performances/t-currentzis-utopia-orchestra-paris-ee7at-m5gzc-86yb2-ywc83-52cw8-wlr28-zjk78",
+   "sourceUrl": "https://www.jiskalambrecht.com/event-details/utopia-orchestra-2",
+   "body": "<div class=\"sqs-layout sqs-grid-12 columns-12\" data-layout-label=\"Post Body\" data-type=\"item\" id=\"item-6aa8598f6290521487dfddcc\"><div class=\"row sqs-row\"><div class=\"col sqs-col-12 span-12\"><div class=\"sqs-block website-component-block sqs-block-website-component sqs-block-html html-block\" data-block-css=\"[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/9e23cfdc-e869-4f4c-90e3-54bb813542f1_957/website.components.html.styles.css&quot;]\" data-block-scripts=\"[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/9e23cfdc-e869-4f4c-90e3-54bb813542f1_957/website.components.html.visitor.js&quot;]\" data-block-type=\"1337\" data-definition-name=\"website.components.html\" data-sqsp-block=\"text\" data-website-component-id=\"60a4881c41e0d9200500\" id=\"block-60a4881c41e0d9200500\"><div class=\"sqs-block-content\"><div class=\"sqs-text-block-container\">\n  \n  <div class=\"sqs-html-content\" data-sqsp-text-block-content><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>Utopia Orchestra</strong></p><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>Teodor Currentzis </strong>Conductor </p><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>Alexander Melnikov</strong> Piano<br></p><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"></p><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>Gustav Mahler  </strong>Symphony No 1 in D major “The Titan”</p><p style=\"text-align: left; white-space: pre-wrap\" data-rte-preserve-empty=\"true\">&nbsp;<strong>Dmitry Shostakovich  </strong>Piano Concerto No. 2 in F major op. 102</p></div>\n\n\n  \n<style id=\"container-styles\">#block-60a4881c41e0d9200500 {\n    \n    \n    \n  }\n\n  #block-60a4881c41e0d9200500 .sqs-html-content {\n    \n    }\n\n  #block-60a4881c41e0d9200500 {\n      mix-blend-mode: var(--tweak-text-block-blend\n  );\n      border-radius: var(--tweak-text-block-radius);\n  }\n\n  \n  \n\n\n\n  \n  \n\n  \n</style>\n\n<style id=\"override-container-styles\">\n    @media screen and (max-width: 767px) {\n          \n            \n\n#block-60a4881c41e0d9200500 {\n            \n            }\n        }\n    \n  \n    @media screen and (max-width: 767px) {\n          #block-60a4881c41e0d9200500 .sqs-html-content {\n            \n            }\n        }\n    \n  @media screen and (max-width: 767px) {\n          \n          \n\n          \n          \n          \n        }</style>\n<style class=\"transform-overrides-vars\">\n  \n</style>\n\n\n\n\n</div>\n</div></div></div></div></div>",
+   "excerpt": "",
+   "location": {
+    "mapZoom": 12.0,
+    "mapLat": 25.0488422,
+    "mapLng": 121.5237725,
+    "markerLat": 25.0488422,
+    "markerLng": 121.5237725,
+    "addressTitle": "Taipei Natio Theatre",
+    "addressLine1": "Lane 53, Section 1, Zhongshan North Road",
+    "addressLine2": "Taipei City, 104",
+    "addressCountry": "Taïwan"
+   },
+   "assetUrl": "https://images.squarespace-cdn.com/content/v1/5ca4cc13ab1a6251fbffc7cb/1789417988765-OT2YKNMOMS34EQ0S4WU7/2022_National-Theater-and-Concert-Hall_1.jpg",
+   "contentType": "image/jpeg",
+   "structuredContent": {
+    "_type": "CalendarEvent",
+    "startDate": 1795633200158,
+    "endDate": 1795640400158
+   },
+   "startDate": 1795633200158,
+   "endDate": 1795640400158,
+   "addedOn": 1789417999595,
+   "updatedOn": 1789417999910,
+   "recordTypeLabel": "event"
+  }
+ ],
+ "past": [
+  {
+   "id": "699dcddcfb615150a4d9fce2",
+   "title": "Sir Simon Rattle, Chamber Orchestra of Europe | Hamburg",
+   "urlId": "chamber-orchestra-of-europe-sir-simon-rattle-berlin-cmkjf-8cbs2-2xbl9",
+   "fullUrl": "/performances/chamber-orchestra-of-europe-sir-simon-rattle-berlin-cmkjf-8cbs2-2xbl9",
+   "sourceUrl": "https://www.elbphilharmonie.de/en/whats-on/chamber-orchestra-of-europe-sir-simon-rattle/23520",
+   "body": "<div class=\"sqs-layout sqs-grid-12 columns-12\" data-layout-label=\"Post Body\" data-type=\"item\" id=\"item-699dcddcfb615150a4d9fce2\"><div class=\"row sqs-row\"><div class=\"col sqs-col-12 span-12\"><div class=\"sqs-block website-component-block sqs-block-website-component sqs-block-html html-block\" data-block-css=\"[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/9e23cfdc-e869-4f4c-90e3-54bb813542f1_957/website.components.html.styles.css&quot;]\" data-block-scripts=\"[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/9e23cfdc-e869-4f4c-90e3-54bb813542f1_957/website.components.html.visitor.js&quot;]\" data-block-type=\"1337\" data-definition-name=\"website.components.html\" data-sqsp-block=\"text\" data-website-component-id=\"376df8346b2b79d21a44\" id=\"block-376df8346b2b79d21a44\"><div class=\"sqs-block-content\"><div class=\"sqs-text-block-container\">\n  \n  <div class=\"sqs-html-content\" data-sqsp-text-block-content><p class=\"\" style=\"white-space:pre-wrap;\"><strong>Chamber Orchestra of Europe</strong><br><strong>Sir Simon Rattle </strong>Conductor </p><p class=\"\" data-rte-preserve-empty=\"true\" style=\"white-space:pre-wrap;\"></p><p class=\"\" style=\"white-space:pre-wrap;\"><strong>Béla Bartók</strong><br>Music for Strings, Percussion and Celesta, Sz 106</p><p class=\"\" style=\"white-space:pre-wrap;\"><strong>Ferruccio Busoni</strong><br>Two Studies on <em>Doctor Faust</em>, op. 51: No. 1 Sarabande</p><p class=\"\" style=\"white-space:pre-wrap;\"><strong>Johannes Brahms</strong><br>Symphony No. 4 in E minor, op. 98</p><p class=\"\" style=\"white-space:pre-wrap;\"><br></p></div>\n\n\n  \n<style id=\"container-styles\">#block-376df8346b2b79d21a44 {\n    \n    --stroke-style: none;--stroke-thickness: 6px;\n    \n      \n      \n      \n    \n\n\n\n  }\n\n  #block-376df8346b2b79d21a44 .sqs-html-content {\n    \n    --tweak-text-block-padding: 6% 6% 6% 6%;\n  --tweak-text-block-padding: initial;\n}\n\n  #block-376df8346b2b79d21a44 {\n      mix-blend-mode: var(--tweak-text-block-blend\n  );\n      border-radius: var(--tweak-text-block-radius);\n  }\n\n  \n  \n#block-376df8346b2b79d21a44 {\n      --tweak-text-block-radius: 0px 0px 0px 0px;\n    }\n\n\n  \n  \n\n  #block-376df8346b2b79d21a44 {\n    }\n\n</style>\n\n<style id=\"override-container-styles\">\n    @media screen and (max-width: 767px) {\n          \n            \n\n#block-376df8346b2b79d21a44 {\n            \n            }\n        }\n    \n  \n    @media screen and (max-width: 767px) {\n          #block-376df8346b2b79d21a44 .sqs-html-content {\n            \n            }\n        }\n    \n  @media screen and (max-width: 767px) {\n          \n          \n\n          \n          \n          \n        }</style>\n<style class=\"transform-overrides-vars\">\n  \n</style>\n\n\n\n\n</div>\n</div></div></div></div></div>",
+   "excerpt": "",
+   "location": {
+    "mapZoom": 12.0,
+    "mapLat": 53.5411182,
+    "mapLng": 9.9853299,
+    "markerLat": 40.7207559,
+    "markerLng": -74.0007613,
+    "addressTitle": "Elbphilharmonie, Great Hall",
+    "addressLine1": "",
+    "addressLine2": "Hamburg, HH, 20457",
+    "addressCountry": "Allemagne"
+   },
+   "assetUrl": "https://images.squarespace-cdn.com/content/v1/5ca4cc13ab1a6251fbffc7cb/1771950151861-U8YPAXRU6KNAB1V2PNLY/elbphilharmonie-1920x800.jpg",
+   "contentType": "image/jpeg",
+   "structuredContent": {
+    "_type": "CalendarEvent",
+    "startDate": 1777226400286,
+    "endDate": 1777233600286
+   },
+   "startDate": 1777226400286,
+   "endDate": 1777233600286,
+   "addedOn": 1771949630575,
+   "updatedOn": 1771950163649,
+   "recordTypeLabel": "event"
+  },
+  {
+   "id": "6a4ff10a95331219232b891f",
+   "title": "Ravel Introduction &amp; Allegro | Pärnu Music Festival Gala",
+   "urlId": "hndel-harp-concerto-p-jrvi-estonian-festival-orchestra-yrjam",
+   "fullUrl": "/performances/hndel-harp-concerto-p-jrvi-estonian-festival-orchestra-yrjam",
+   "sourceUrl": "https://parnumusicfestival.ee/en/parnu-music-festival-gala/",
+   "body": "<div class=\"sqs-layout sqs-grid-12 columns-12\" data-layout-label=\"Post Body\" data-type=\"item\" id=\"item-6a4ff10a95331219232b891f\"><div class=\"row sqs-row\"><div class=\"col sqs-col-12 span-12\"><div class=\"sqs-block website-component-block sqs-block-website-component sqs-block-html html-block\" data-block-css=\"[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/9e23cfdc-e869-4f4c-90e3-54bb813542f1_957/website.components.html.styles.css&quot;]\" data-block-scripts=\"[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/9e23cfdc-e869-4f4c-90e3-54bb813542f1_957/website.components.html.visitor.js&quot;]\" data-block-type=\"1337\" data-definition-name=\"website.components.html\" data-sqsp-block=\"text\" data-website-component-id=\"b854b1b6962ab091b6a5\" id=\"block-b854b1b6962ab091b6a5\"><div class=\"sqs-block-content\"><div class=\"sqs-text-block-container\">\n  \n  <div class=\"sqs-html-content\" data-sqsp-text-block-content><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>Anaëlle Tourret </strong>Harp</p><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>Thomas Hancox </strong>Flute</p><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>Taavi Orro </strong>Clarinet</p><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>Mari Poll, Amanda Ernesaks</strong> Violin</p><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>Tomohiro Arita</strong> Viola</p><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>Andres Metspalu </strong>Cello</p><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"></p><p style=\"white-space:pre-wrap;\" data-rte-preserve-empty=\"true\"><strong>Maurice Ravel </strong>Introduction et allegro, M46, for harp, flute, clarinet and string quartet </p></div>\n\n\n  \n<style id=\"container-styles\">#block-b854b1b6962ab091b6a5 {\n    \n    \n    \n  }\n\n  #block-b854b1b6962ab091b6a5 .sqs-html-content {\n    \n    }\n\n  #block-b854b1b6962ab091b6a5 {\n      mix-blend-mode: var(--tweak-text-block-blend\n  );\n      border-radius: var(--tweak-text-block-radius);\n  }\n\n  \n  \n\n\n\n  \n  \n\n  \n</style>\n\n<style id=\"override-container-styles\">\n    @media screen and (max-width: 767px) {\n          \n            \n\n#block-b854b1b6962ab091b6a5 {\n            \n            }\n        }\n    \n  \n    @media screen and (max-width: 767px) {\n          #block-b854b1b6962ab091b6a5 .sqs-html-content {\n            \n            }\n        }\n    \n  @media screen and (max-width: 767px) {\n          \n          \n\n          \n          \n          \n        }</style>\n<style class=\"transform-overrides-vars\">\n  \n</style>\n\n\n\n\n</div>\n</div></div></div></div></div>",
+   "excerpt": "",
+   "location": {
+    "mapZoom": 12.0,
+    "mapLat": 58.38732909999999,
+    "mapLng": 24.4998466,
+    "markerLat": 58.38732909999999,
+    "markerLng": 24.4998466,
+    "addressTitle": "Pärmu Concert Hall",
+    "addressLine1": "4 Aida tänav",
+    "addressLine2": "Pärnu, Pärnu maakond, 80011",
+    "addressCountry": "Estonie"
+   },
+   "assetUrl": "https://images.squarespace-cdn.com/content/v1/5ca4cc13ab1a6251fbffc7cb/1783624027507-KOC8JVMBP0VM58BL7KHJ/IMG_0378.jpeg",
+   "contentType": "image/jpeg",
+   "structuredContent": {
+    "_type": "CalendarEvent",
+    "startDate": 1784224800238,
+    "endDate": 1784232000238
+   },
+   "startDate": 1784224800238,
+   "endDate": 1784232000238,
+   "addedOn": 1783624275742,
+   "updatedOn": 1783624276137,
+   "recordTypeLabel": "event"
+  }
+ ]
+}

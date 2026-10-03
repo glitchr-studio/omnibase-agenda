@@ -1,0 +1,166 @@
+index:
+  title: "Agenda"
+  eyebrow: "Concerts"
+  lead: "The dates to come: where to hear it, with whom, and where the tickets are."
+  description: "The concert dates: the venues, the programmes, the tickets."
+  subscribe: "Add to my calendar"
+  download: "Download the calendar (.ics)"
+  empty: "No date announced yet: the next ones are on their way."
+  past: "Past dates"
+  pages: "Pages"
+  newer: "More recent"
+  older: "Older"
+
+event:
+  back: "The agenda"
+  when: "When"
+  where: "Where"
+  with: "With"
+  all_day: "All day"
+  until: "until {date}"
+  range: "From {from} to {to}"
+  conducted_by: "conducted by {name}"
+  cancelled: "Cancelled"
+  cancelled_notice: "This date is cancelled."
+  tickets: "Tickets"
+  map: "See on the map"
+  programme: "Programme"
+  performers: "Performers"
+  organiser: "The organiser's page"
+
+calendar:
+  google: "Google Calendar"
+  ics: "Apple, Outlook (.ics)"
+
+role:
+  soloist: "Soloist"
+  leader: "Concertmaster"
+  chamber: "Chamber music"
+  orchestra: "Orchestra"
+  recital: "Recital"
+  masterclass: "Masterclass"
+  other: "Other"
+
+admin:
+  event:
+    title: "Title"
+    starts_at: "Starts"
+    ends_at: "Ends"
+    timezone: "Timezone"
+    timezone_help: "Where the hall stands: Europe/Berlin, Europe/Paris, America/New_York."
+    all_day: "Whole days"
+    cancelled: "Cancelled"
+    venue: "Venue"
+    role: "Role"
+    ensemble: "Orchestra, ensemble"
+    conductor: "Conductor"
+    programme: "Programme"
+    programme_help: "One work per line: “Glière — Harp Concerto op. 74”."
+    performers: "Performers"
+    performers_help: "One per line: “Anna Meyer — harp”."
+    tickets_url: "Tickets (link)"
+    event_url: "Organiser's page (link)"
+    cover: "Picture"
+    headline: "Subtitle"
+    excerpt: "Summary"
+    excerpt_help: "A few words for the search engines and the newsletter."
+    content: "Text"
+    source_uid: "Calendar entry (UID)"
+    sync_locked: "Keep the site's texts (don't update from the calendar)"
+    sync_locked_help: "Ticked: a sync brings only the hours and a cancellation from the calendar; the title, the venue, the programme and the rest stay as written here."
+    copy: "copy"
+    action:
+      duplicate: "Duplicate"
+      sync: "Read the calendars"
+      sync_confirm: "Read the calendars now?"
+    flash:
+      duplicated: "Date duplicated, as a draft: set its day."
+      no_source: "No calendar to read: paste its address in Agenda › Google Calendar."
+      synced: "Calendars read: {created} new, {updated} updated, {cancelled} cancelled."
+  calendar:
+    title: "Google Calendar"
+    lead: "The dates kept in a Google Calendar, from a phone: the site reads it every 30 minutes. Nobody needs to log in here to add a concert."
+    address:
+      title: "The calendar's secret address"
+      label: "Secret address in iCal format"
+      set: "A calendar is read"
+      none: "No calendar yet"
+      save: "Save"
+      forget: "Forget this address"
+      help: "It is the calendar's key: whoever has it reads the whole calendar. It is shown here half hidden; if it ever leaks, reset it in Google Calendar and paste the new one."
+      configured: "Also read, set in the site's configuration:"
+    sync:
+      title: "Synchronisation"
+      last: "Last read on {at}"
+      created: "new"
+      updated: "updated"
+      cancelled: "cancelled"
+      unchanged: "unchanged"
+      never: "Not read yet"
+      help: "The calendar is read every 30 minutes. To see a change at once, sync now."
+      now: "Sync now"
+    howto:
+      title: "How to"
+      create: "In Google Calendar (on a computer, calendar.google.com), make a calendar for the concerts only: \"Other calendars\" › \"+\" › \"Create new calendar\", named \"Concerts\"."
+      share: "If the agency keeps the dates too: the calendar's \"Settings and sharing\" › \"Share with specific people\" › its address, with \"Make changes to events\"."
+      secret: "In the same settings, \"Integrate calendar\" › \"Secret address in iCal format\": copy it."
+      paste: "Paste it above and save. That is all: from now on the concerts are written in Google Calendar, on the phone or the computer."
+      write: "A concert is an event of that calendar: the title is the concert's name, the location the hall and its address, the hours the concert's, and the description one piece of information per line - for example:"
+    example:
+      title: "Title: Perspectives concertantes — Glière"
+      where: "Location: Elbphilharmonie, Platz der Deutschen Einheit 1, 20457 Hamburg"
+      description_label: "Description:"
+      description: |
+        Orchestra: NDR Elbphilharmonie Orchester
+        Conductor: Vasily Petrenko
+        Role: soloist
+        Tickets: https://www.elbphilharmonie.de/...
+        Programme:
+        Glière — Harp Concerto op. 74
+        Debussy — Danses sacrée et profane
+    copy: "Copy"
+    copied: "Copied"
+    copy_help: "Lines can be written in English, French, German or Italian, in any order; a line the site does not know is left aside."
+    keys:
+      title: "The words the site reads"
+      ensemble: "Orchestra, ensemble"
+      conductor: "Conductor"
+      role: "Role"
+      role_words: "soloist, concertmaster, chamber, orchestra, recital, masterclass"
+      performers: "Performers"
+      performers_help: "on the line, separated by commas (\"Anna Meyer, harp\"), or one per line under it"
+      tickets: "Tickets"
+      programme: "Programme"
+      programme_help: "one work per line under it: \"Composer — Work\""
+    after:
+      title: "Then"
+      edit: "A change in the calendar is on the site within 30 minutes."
+      delete: "A concert deleted from the calendar stays on the site, marked \"cancelled\": whoever had a ticket finds it."
+      lock: "A date whose texts were rewritten on the site keeps them when \"Keep the site's texts\" is ticked on it (Agenda › Concerts): the calendar then only moves its hours and cancels it."
+    flash:
+      saved: "Address saved: the calendar is read at the next sync."
+      forgotten: "Address forgotten: that calendar is no longer read."
+      invalid: "That is not an address: copy the whole \"Secret address in iCal format\" (https://calendar.google.com/…)."
+      no_source: "No calendar to read: paste its address first."
+  venue:
+    name: "Name"
+    hall: "Hall"
+    address: "Address"
+    postcode: "Postcode"
+    city: "City"
+    country: "Country"
+    website: "Website"
+    map_url: "Map (link)"
+    map_url_help: "Empty: the address is searched on OpenStreetMap."
+    latitude: "Latitude"
+    longitude: "Longitude"
+    slug: "Slug"
+  widget:
+    upcoming: "{count, plural, =0 {date to come} one {date to come} other {dates to come}}"
+    none: "No date to come."
+
+today:
+  label: "Today's concert"
+  today: "Today"
+  tonight: "Tonight"
+  live: "On stage now"

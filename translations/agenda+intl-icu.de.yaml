@@ -1,0 +1,166 @@
+index:
+  title: "Termine"
+  eyebrow: "Konzerte"
+  lead: "Die kommenden Termine: wo, mit wem, und wo es Karten gibt."
+  description: "Die Konzerttermine: Spielorte, Programme, Karten."
+  subscribe: "In meinen Kalender"
+  download: "Kalender herunterladen (.ics)"
+  empty: "Noch keine Termine angekündigt: die nächsten folgen bald."
+  past: "Vergangene Termine"
+  pages: "Seiten"
+  newer: "Neuere"
+  older: "Ältere"
+
+event:
+  back: "Alle Termine"
+  when: "Wann"
+  where: "Wo"
+  with: "Mit"
+  all_day: "Ganztägig"
+  until: "bis {date}"
+  range: "Vom {from} bis {to}"
+  conducted_by: "Leitung: {name}"
+  cancelled: "Abgesagt"
+  cancelled_notice: "Dieser Termin ist abgesagt."
+  tickets: "Karten"
+  map: "Auf der Karte ansehen"
+  programme: "Programm"
+  performers: "Mitwirkende"
+  organiser: "Zur Seite des Veranstalters"
+
+calendar:
+  google: "Google Kalender"
+  ics: "Apple, Outlook (.ics)"
+
+role:
+  soloist: "Solo"
+  leader: "Konzertmeister"
+  chamber: "Kammermusik"
+  orchestra: "Orchester"
+  recital: "Rezital"
+  masterclass: "Meisterkurs"
+  other: "Sonstiges"
+
+admin:
+  event:
+    title: "Titel"
+    starts_at: "Beginn"
+    ends_at: "Ende"
+    timezone: "Zeitzone"
+    timezone_help: "Die des Saals: Europe/Berlin, Europe/Paris, America/New_York."
+    all_day: "Ganze Tage"
+    cancelled: "Abgesagt"
+    venue: "Spielort"
+    role: "Rolle"
+    ensemble: "Orchester, Ensemble"
+    conductor: "Dirigent"
+    programme: "Programm"
+    programme_help: "Ein Werk pro Zeile: „Glière — Harfenkonzert op. 74“."
+    performers: "Mitwirkende"
+    performers_help: "Eine Person pro Zeile: „Anna Meyer — Harfe“."
+    tickets_url: "Karten (Link)"
+    event_url: "Seite des Veranstalters (Link)"
+    cover: "Bild"
+    headline: "Untertitel"
+    excerpt: "Kurztext"
+    excerpt_help: "Ein paar Worte für die Suchmaschinen und den Newsletter."
+    content: "Text"
+    source_uid: "Kalendereintrag (UID)"
+    sync_locked: "Texte der Website behalten (nicht aus dem Kalender aktualisieren)"
+    sync_locked_help: "Angehakt: eine Synchronisierung übernimmt aus dem Kalender nur die Zeiten und eine Absage; Titel, Spielort, Programm und der Rest bleiben, wie hier geschrieben."
+    copy: "Kopie"
+    action:
+      duplicate: "Duplizieren"
+      sync: "Kalender einlesen"
+      sync_confirm: "Die Kalender jetzt einlesen?"
+    flash:
+      duplicated: "Termin dupliziert, als Entwurf: Datum anpassen."
+      no_source: "Kein Kalender zum Einlesen: seine Adresse unter Termine › Google Kalender einfügen."
+      synced: "Kalender eingelesen: {created} neu, {updated} aktualisiert, {cancelled} abgesagt."
+  calendar:
+    title: "Google Kalender"
+    lead: "Die Termine, in einem Google Kalender gepflegt, vom Handy aus: die Website liest ihn alle 30 Minuten. Um ein Konzert einzutragen, muss sich niemand hier anmelden."
+    address:
+      title: "Die geheime Adresse des Kalenders"
+      label: "Privatadresse im iCal-Format"
+      set: "Ein Kalender wird gelesen"
+      none: "Noch kein Kalender"
+      save: "Speichern"
+      forget: "Diese Adresse vergessen"
+      help: "Sie ist der Schlüssel des Kalenders: wer sie hat, liest den ganzen Kalender. Sie wird hier halb verdeckt gezeigt; sollte sie je bekannt werden, in Google Kalender zurücksetzen und die neue einfügen."
+      configured: "Außerdem gelesen, in der Konfiguration der Website eingestellt:"
+    sync:
+      title: "Synchronisierung"
+      last: "Zuletzt gelesen am {at}"
+      created: "neu"
+      updated: "aktualisiert"
+      cancelled: "abgesagt"
+      unchanged: "unverändert"
+      never: "Noch nicht gelesen"
+      help: "Der Kalender wird alle 30 Minuten gelesen. Um eine Änderung sofort zu sehen: jetzt synchronisieren."
+      now: "Jetzt synchronisieren"
+    howto:
+      title: "So geht's"
+      create: "In Google Kalender (am Computer, calendar.google.com) einen eigenen Kalender nur für die Konzerte anlegen: „Weitere Kalender“ › „+“ › „Neuen Kalender erstellen“, Name „Konzerte“."
+      share: "Pflegt die Agentur die Termine mit: „Einstellungen und Freigabe“ des Kalenders › „Für bestimmte Personen freigeben“ › ihre Adresse, mit „Änderungen an Terminen vornehmen“."
+      secret: "In denselben Einstellungen „Kalender integrieren“ › „Privatadresse im iCal-Format“: kopieren."
+      paste: "Oben einfügen und speichern. Das ist alles: ab jetzt werden die Konzerte in Google Kalender eingetragen, am Handy oder am Computer."
+      write: "Ein Konzert ist ein Termin dieses Kalenders: der Titel ist der Name des Konzerts, der Ort der Saal mit Adresse, die Zeiten die des Konzerts, und die Beschreibung eine Angabe pro Zeile - zum Beispiel:"
+    example:
+      title: "Titel: Perspectives concertantes — Glière"
+      where: "Ort: Elbphilharmonie, Platz der Deutschen Einheit 1, 20457 Hamburg"
+      description_label: "Beschreibung:"
+      description: |
+        Orchester: NDR Elbphilharmonie Orchester
+        Dirigent: Vasily Petrenko
+        Rolle: Solistin
+        Karten: https://www.elbphilharmonie.de/...
+        Programm:
+        Glière — Harfenkonzert op. 74
+        Debussy — Danses sacrée et profane
+    copy: "Kopieren"
+    copied: "Kopiert"
+    copy_help: "Die Zeilen können auf Deutsch, Englisch, Französisch oder Italienisch geschrieben werden, in beliebiger Reihenfolge; eine Zeile, die die Website nicht kennt, bleibt außen vor."
+    keys:
+      title: "Die Wörter, die die Website liest"
+      ensemble: "Orchester, Ensemble"
+      conductor: "Dirigent"
+      role: "Rolle"
+      role_words: "Solist, Konzertmeister, Kammermusik, Orchester, Rezital, Masterclass"
+      performers: "Mit"
+      performers_help: "in der Zeile, durch Kommas getrennt („Anna Meyer, Harfe“), oder eine Person pro Zeile darunter"
+      tickets: "Karten"
+      programme: "Programm"
+      programme_help: "ein Werk pro Zeile darunter: „Komponist — Werk“"
+    after:
+      title: "Danach"
+      edit: "Eine Änderung im Kalender ist innerhalb von 30 Minuten auf der Website."
+      delete: "Ein aus dem Kalender gelöschtes Konzert bleibt auf der Website, als „abgesagt“ markiert: wer eine Karte hat, findet es wieder."
+      lock: "Ein Termin, dessen Texte auf der Website neu geschrieben wurden, behält sie, wenn „Texte der Website behalten“ bei ihm angehakt ist (Termine › Konzerte): der Kalender verschiebt dann nur seine Zeiten und sagt ihn ab."
+    flash:
+      saved: "Adresse gespeichert: der Kalender wird bei der nächsten Synchronisierung gelesen."
+      forgotten: "Adresse vergessen: dieser Kalender wird nicht mehr gelesen."
+      invalid: "Das ist keine Adresse: die ganze „Privatadresse im iCal-Format“ kopieren (https://calendar.google.com/…)."
+      no_source: "Kein Kalender zum Lesen: zuerst seine Adresse einfügen."
+  venue:
+    name: "Name"
+    hall: "Saal"
+    address: "Adresse"
+    postcode: "PLZ"
+    city: "Stadt"
+    country: "Land"
+    website: "Website"
+    map_url: "Karte (Link)"
+    map_url_help: "Leer: die Adresse wird auf OpenStreetMap gesucht."
+    latitude: "Breitengrad"
+    longitude: "Längengrad"
+    slug: "Slug"
+  widget:
+    upcoming: "{count, plural, =0 {kommende Termine} one {kommender Termin} other {kommende Termine}}"
+    none: "Keine kommenden Termine."
+
+today:
+  label: "Das Konzert heute"
+  today: "Heute"
+  tonight: "Heute Abend"
+  live: "Jetzt auf der Bühne"

@@ -1,0 +1,166 @@
+index:
+  title: "Agenda"
+  eyebrow: "Concerts"
+  lead: "Les dates à venir : où l'entendre, avec qui, et où trouver les billets."
+  description: "Les dates de concert : les salles, les programmes, la billetterie."
+  subscribe: "Ajouter à mon agenda"
+  download: "Télécharger le calendrier (.ics)"
+  empty: "Aucune date annoncée pour l'instant : les prochaines arrivent."
+  past: "Dates passées"
+  pages: "Pages"
+  newer: "Plus récentes"
+  older: "Plus anciennes"
+
+event:
+  back: "L'agenda"
+  when: "Quand"
+  where: "Où"
+  with: "Avec"
+  all_day: "Toute la journée"
+  until: "jusqu'au {date}"
+  range: "Du {from} au {to}"
+  conducted_by: "sous la direction de {name}"
+  cancelled: "Annulé"
+  cancelled_notice: "Cette date est annulée."
+  tickets: "Billets"
+  map: "Voir sur la carte"
+  programme: "Programme"
+  performers: "Interprètes"
+  organiser: "La page de l'organisateur"
+
+calendar:
+  google: "Google Agenda"
+  ics: "Apple, Outlook (.ics)"
+
+role:
+  soloist: "Soliste"
+  leader: "Violon solo"
+  chamber: "Musique de chambre"
+  orchestra: "Orchestre"
+  recital: "Récital"
+  masterclass: "Masterclass"
+  other: "Autre"
+
+admin:
+  event:
+    title: "Titre"
+    starts_at: "Début"
+    ends_at: "Fin"
+    timezone: "Fuseau horaire"
+    timezone_help: "Celui de la salle : Europe/Berlin, Europe/Paris, America/New_York."
+    all_day: "Journées entières"
+    cancelled: "Annulé"
+    venue: "Lieu"
+    role: "Rôle"
+    ensemble: "Orchestre, ensemble"
+    conductor: "Chef"
+    programme: "Programme"
+    programme_help: "Une œuvre par ligne : « Glière — Concerto pour harpe op. 74 »."
+    performers: "Interprètes"
+    performers_help: "Un par ligne : « Anna Meyer — harpe »."
+    tickets_url: "Billetterie (lien)"
+    event_url: "Page de l'organisateur (lien)"
+    cover: "Image"
+    headline: "Sous-titre"
+    excerpt: "Résumé"
+    excerpt_help: "Quelques mots pour les moteurs de recherche et la lettre d'information."
+    content: "Texte"
+    source_uid: "Entrée du calendrier (UID)"
+    sync_locked: "Garder les textes du site (ne pas mettre à jour depuis le calendrier)"
+    sync_locked_help: "Coché : une synchronisation n'apporte du calendrier que les horaires et une annulation ; le titre, le lieu, le programme et le reste restent tels qu'écrits ici."
+    copy: "copie"
+    action:
+      duplicate: "Dupliquer"
+      sync: "Lire les calendriers"
+      sync_confirm: "Lire les calendriers maintenant ?"
+    flash:
+      duplicated: "Date dupliquée, en brouillon : réglez son jour."
+      no_source: "Aucun calendrier à lire : collez son adresse dans Agenda › Google Agenda."
+      synced: "Calendriers lus : {created} nouvelles, {updated} mises à jour, {cancelled} annulées."
+  calendar:
+    title: "Google Agenda"
+    lead: "Les dates tenues dans un Google Agenda, depuis un téléphone : le site le lit toutes les 30 minutes. Personne n'a besoin de se connecter ici pour ajouter un concert."
+    address:
+      title: "L'adresse secrète de l'agenda"
+      label: "Adresse secrète au format iCal"
+      set: "Un agenda est lu"
+      none: "Pas encore d'agenda"
+      save: "Enregistrer"
+      forget: "Oublier cette adresse"
+      help: "C'est la clé de l'agenda : qui la possède lit tout l'agenda. Elle est affichée ici à moitié masquée ; si elle devait fuiter, réinitialisez-la dans Google Agenda et collez la nouvelle."
+      configured: "Également lus, réglés dans la configuration du site :"
+    sync:
+      title: "Synchronisation"
+      last: "Dernière lecture le {at}"
+      created: "nouvelles"
+      updated: "mises à jour"
+      cancelled: "annulées"
+      unchanged: "inchangées"
+      never: "Pas encore lu"
+      help: "L'agenda est lu toutes les 30 minutes. Pour voir un changement tout de suite, synchronisez maintenant."
+      now: "Synchroniser maintenant"
+    howto:
+      title: "Mode d'emploi"
+      create: "Dans Google Agenda (sur un ordinateur, calendar.google.com), créez un agenda réservé aux concerts : « Autres agendas » › « + » › « Créer un agenda », nommé « Concerts »."
+      share: "Si l'agence tient aussi les dates : « Paramètres et partage » de l'agenda › « Partager avec des personnes en particulier » › son adresse, avec « Modifier les événements »."
+      secret: "Dans les mêmes paramètres, « Intégrer l'agenda » › « Adresse secrète au format iCal » : copiez-la."
+      paste: "Collez-la ci-dessus et enregistrez. C'est tout : désormais les concerts s'écrivent dans Google Agenda, sur le téléphone ou l'ordinateur."
+      write: "Un concert est un événement de cet agenda : le titre est le nom du concert, le lieu la salle et son adresse, les horaires ceux du concert, et la description une information par ligne - par exemple :"
+    example:
+      title: "Titre : Perspectives concertantes — Glière"
+      where: "Lieu : Elbphilharmonie, Platz der Deutschen Einheit 1, 20457 Hamburg"
+      description_label: "Description :"
+      description: |
+        Orchestre : NDR Elbphilharmonie Orchester
+        Chef : Vasily Petrenko
+        Rôle : soliste
+        Billets : https://www.elbphilharmonie.de/...
+        Programme :
+        Glière — Concerto pour harpe op. 74
+        Debussy — Danses sacrée et profane
+    copy: "Copier"
+    copied: "Copié"
+    copy_help: "Les lignes s'écrivent en français, en anglais, en allemand ou en italien, dans n'importe quel ordre ; une ligne que le site ne connaît pas est laissée de côté."
+    keys:
+      title: "Les mots que le site lit"
+      ensemble: "Orchestre, ensemble"
+      conductor: "Chef"
+      role: "Rôle"
+      role_words: "soliste, violon solo, chambre, orchestre, récital, masterclass"
+      performers: "Avec"
+      performers_help: "sur la ligne, séparés par des virgules (« Anna Meyer, harpe »), ou un par ligne en dessous"
+      tickets: "Billets"
+      programme: "Programme"
+      programme_help: "une œuvre par ligne en dessous : « Compositeur — Œuvre »"
+    after:
+      title: "Ensuite"
+      edit: "Un changement dans l'agenda est sur le site en moins de 30 minutes."
+      delete: "Un concert supprimé de l'agenda reste sur le site, marqué « annulé » : qui avait un billet le retrouve."
+      lock: "Une date dont les textes ont été réécrits sur le site les garde si « Garder les textes du site » est coché sur elle (Agenda › Concerts) : l'agenda ne fait alors que déplacer ses horaires et l'annuler."
+    flash:
+      saved: "Adresse enregistrée : l'agenda est lu à la prochaine synchronisation."
+      forgotten: "Adresse oubliée : cet agenda n'est plus lu."
+      invalid: "Ce n'est pas une adresse : copiez toute l'« Adresse secrète au format iCal » (https://calendar.google.com/…)."
+      no_source: "Aucun agenda à lire : collez d'abord son adresse."
+  venue:
+    name: "Nom"
+    hall: "Salle"
+    address: "Adresse"
+    postcode: "Code postal"
+    city: "Ville"
+    country: "Pays"
+    website: "Site"
+    map_url: "Carte (lien)"
+    map_url_help: "Vide : l'adresse est cherchée sur OpenStreetMap."
+    latitude: "Latitude"
+    longitude: "Longitude"
+    slug: "Slug"
+  widget:
+    upcoming: "{count, plural, =0 {date à venir} one {date à venir} other {dates à venir}}"
+    none: "Aucune date à venir."
+
+today:
+  label: "Le concert du jour"
+  today: "Aujourd'hui"
+  tonight: "Ce soir"
+  live: "En scène"

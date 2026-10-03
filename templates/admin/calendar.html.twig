@@ -1,0 +1,136 @@
+{#
+ # The Google Calendar the dates come from (Base\Agenda\Controller\Admin\CalendarController),
+ # in the style of the back office's tools pages: the address, the last sync and
+ # its button, then the how-to and an example to copy, in the reader's language.
+ #}
+{% extends '@Admin/layout.html.twig' %}
+
+{% block page_title %}{{ '@agenda.admin.calendar.title'|trans }}{% endblock %}
+
+{% block content_header %}
+<div class="admin-header">
+    <span class="admin-header-icon"><i class="fa-brands fa-google"></i></span>
+    <div class="admin-header-titles">
+        <h1>{{ '@agenda.admin.calendar.title'|trans }}</h1>
+        <div class="admin-header-subtitle">{{ '@agenda.admin.calendar.lead'|trans }}</div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<style>
+    .tools-admin { display: grid; gap: 1rem; max-width: 64rem; }
+    .tools-admin .card { padding: 1.1rem 1.25rem; }
+    .tools-admin h2 { font-size: 1rem; margin: 0 0 .6rem; }
+    .tools-admin form.inline { display: inline; }
+    .tools-admin .state { display: inline-flex; align-items: center; gap: .4rem; font-weight: 700; }
+    .tools-admin .state::before { content: ""; width: .55rem; height: .55rem; border-radius: 50%; background: currentColor; }
+    .tools-admin .is-on { color: #2d6a4f; } .tools-admin .is-off { color: #a8740f; } .tools-admin .is-late { color: #c0392b; }
+    .agenda-address { display: flex; gap: .5rem; flex-wrap: wrap; margin: .6rem 0; }
+    .agenda-address input { flex: 1 1 22rem; min-width: 0; }
+    .agenda-address-current { font-family: ui-monospace, monospace; font-size: .85rem; word-break: break-all; }
+    .agenda-counts { display: flex; gap: 1.2rem; flex-wrap: wrap; margin: .4rem 0 .8rem; }
+    .agenda-counts b { font-size: 1.3rem; display: block; line-height: 1.1; }
+    .agenda-counts span { font-size: .8rem; opacity: .75; }
+    .agenda-howto ol { padding-left: 1.2rem; display: grid; gap: .45rem; margin: 0 0 1rem; }
+    .agenda-example { position: relative; }
+    .agenda-example pre, .agenda-example-event { margin: 0; padding: .9rem 1rem; border-radius: .6rem; background: rgba(127,127,127,.1); white-space: pre-wrap; font-size: .85rem; line-height: 1.5; }
+    .agenda-example-event { margin: 0 0 .4rem; opacity: .75; }
+    .agenda-example pre { padding-right: 7rem; }
+    .agenda-example button { position: absolute; top: .5rem; right: .5rem; }
+    .agenda-keys { display: grid; grid-template-columns: max-content 1fr; gap: .3rem 1rem; font-size: .88rem; margin: 0; }
+    .agenda-keys dt { font-weight: 700; }
+    .agenda-keys dd { margin: 0; }
+</style>
+<div class="tools-admin">
+    {% for type, messages in app.flashes(['success', 'warning', 'danger']) %}{% for message in messages %}<div class="alert alert-{{ type }}">{{ message }}</div>{% endfor %}{% endfor %}
+
+    <div class="card">
+        <h2>{{ '@agenda.admin.calendar.address.title'|trans }}</h2>
+        {% if address %}
+        <p class="state is-on">{{ '@agenda.admin.calendar.address.set'|trans }}</p>
+        <p class="agenda-address-current">{{ address }}</p>
+        {% else %}
+        <p class="state is-off">{{ '@agenda.admin.calendar.address.none'|trans }}</p>
+        {% endif %}
+        <form method="post" action="{{ path('agenda_admin_calendar_save') }}">
+            <input type="hidden" name="_token" value="{{ csrf_token('agenda-calendar') }}">
+            <div class="agenda-address">
+                <input class="form-control" type="url" name="address" required autocomplete="off" spellcheck="false" placeholder="https://calendar.google.com/calendar/ical/…/private-…/basic.ics" aria-label="{{ '@agenda.admin.calendar.address.label'|trans }}">
+                <button class="btn btn-primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> {{ '@agenda.admin.calendar.address.save'|trans }}</button>
+            </div>
+        </form>
+        <p class="text-muted small mb-0">{{ '@agenda.admin.calendar.address.help'|trans }}</p>
+        {% if address %}
+        <form class="inline" method="post" action="{{ path('agenda_admin_calendar_save') }}">
+            <input type="hidden" name="_token" value="{{ csrf_token('agenda-calendar') }}"><input type="hidden" name="forget" value="1">
+            <button class="btn btn-outline-secondary btn-sm mt-2" type="submit">{{ '@agenda.admin.calendar.address.forget'|trans }}</button>
+        </form>
+        {% endif %}
+        {% if configured %}
+        <p class="small mt-3 mb-1">{{ '@agenda.admin.calendar.address.configured'|trans }}</p>
+        <ul class="small agenda-address-current">{% for source in configured %}<li>{{ source }}</li>{% endfor %}</ul>
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <h2>{{ '@agenda.admin.calendar.sync.title'|trans }}</h2>
+        {% if last %}
+        <p>{{ '@agenda.admin.calendar.sync.last'|trans({at: last.at|format_datetime('medium', 'short')}) }}</p>
+        <div class="agenda-counts">
+            <div><b>{{ last.created }}</b><span>{{ '@agenda.admin.calendar.sync.created'|trans }}</span></div>
+            <div><b>{{ last.updated }}</b><span>{{ '@agenda.admin.calendar.sync.updated'|trans }}</span></div>
+            <div><b>{{ last.cancelled }}</b><span>{{ '@agenda.admin.calendar.sync.cancelled'|trans }}</span></div>
+            {% if last.unchanged is defined %}<div><b>{{ last.unchanged }}</b><span>{{ '@agenda.admin.calendar.sync.unchanged'|trans }}</span></div>{% endif %}
+        </div>
+        {% for error in last.errors %}<div class="alert alert-danger small">{{ error }}</div>{% endfor %}
+        {% else %}
+        <p class="state is-off">{{ '@agenda.admin.calendar.sync.never'|trans }}</p>
+        {% endif %}
+        <p class="text-muted small">{{ '@agenda.admin.calendar.sync.help'|trans }}</p>
+        {% if has_sources %}
+        <form class="inline" method="post" action="{{ path('agenda_admin_calendar_sync') }}">
+            <input type="hidden" name="_token" value="{{ csrf_token('agenda-sync') }}">
+            <button class="btn btn-primary" type="submit"><i class="fa-solid fa-rotate"></i> {{ '@agenda.admin.calendar.sync.now'|trans }}</button>
+        </form>
+        {% endif %}
+    </div>
+
+    <div class="card agenda-howto">
+        <h2>{{ '@agenda.admin.calendar.howto.title'|trans }}</h2>
+        <ol>
+            <li>{{ '@agenda.admin.calendar.howto.create'|trans }}</li>
+            <li>{{ '@agenda.admin.calendar.howto.share'|trans }}</li>
+            <li>{{ '@agenda.admin.calendar.howto.secret'|trans }}</li>
+            <li>{{ '@agenda.admin.calendar.howto.paste'|trans }}</li>
+            <li>{{ '@agenda.admin.calendar.howto.write'|trans }}</li>
+        </ol>
+
+        <pre class="agenda-example-event">{{ '@agenda.admin.calendar.example.title'|trans }}
+{{ '@agenda.admin.calendar.example.where'|trans }}
+{{ '@agenda.admin.calendar.example.description_label'|trans }}</pre>
+        <div class="agenda-example">
+            <pre id="agenda-example">{{ '@agenda.admin.calendar.example.description'|trans|trim }}</pre>
+            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="navigator.clipboard.writeText(document.getElementById('agenda-example').textContent); this.textContent = '{{ '@agenda.admin.calendar.copied'|trans|e('js') }}';"><i class="fa-regular fa-copy"></i> {{ '@agenda.admin.calendar.copy'|trans }}</button>
+        </div>
+        <p class="small text-muted mt-2">{{ '@agenda.admin.calendar.copy_help'|trans }}</p>
+
+        <h2 class="mt-3">{{ '@agenda.admin.calendar.keys.title'|trans }}</h2>
+        <dl class="agenda-keys">
+            <dt>{{ '@agenda.admin.calendar.keys.ensemble'|trans }}</dt><dd>Orchestra · Ensemble · Orchestre · Orchester</dd>
+            <dt>{{ '@agenda.admin.calendar.keys.conductor'|trans }}</dt><dd>Conductor · Chef · Direction · Dirigent · Leitung · Direttore</dd>
+            <dt>{{ '@agenda.admin.calendar.keys.role'|trans }}</dt><dd>Role · Rôle · Rolle · Ruolo — {{ '@agenda.admin.calendar.keys.role_words'|trans }}</dd>
+            <dt>{{ '@agenda.admin.calendar.keys.performers'|trans }}</dt><dd>With · Avec · Mit · Con — {{ '@agenda.admin.calendar.keys.performers_help'|trans }}</dd>
+            <dt>{{ '@agenda.admin.calendar.keys.tickets'|trans }}</dt><dd>Tickets · Billets · Karten · Biglietti</dd>
+            <dt>{{ '@agenda.admin.calendar.keys.programme'|trans }}</dt><dd>Programme · Program · Programm · Programma — {{ '@agenda.admin.calendar.keys.programme_help'|trans }}</dd>
+        </dl>
+
+        <h2 class="mt-3">{{ '@agenda.admin.calendar.after.title'|trans }}</h2>
+        <ul class="mb-0">
+            <li>{{ '@agenda.admin.calendar.after.edit'|trans }}</li>
+            <li>{{ '@agenda.admin.calendar.after.delete'|trans }}</li>
+            <li>{{ '@agenda.admin.calendar.after.lock'|trans }}</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
