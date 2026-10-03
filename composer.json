@@ -2,7 +2,7 @@
     "name": "omnibase/agenda",
     "description": "Concert dates and venues for omnibase: an Event is a Thread; the agenda page, ICS feeds and imports, Google Calendar links, JSON-LD MusicEvent.",
     "type": "symfony-bundle",
-    "license": "MIT",
+    "license": "LGPL-3.0-or-later",
     "authors": [{"name": "Marco Meyer", "email": "marco.meyer@glitchr.io"}],
     "require": {
         "php": "^8.2",
