@@ -64,7 +64,8 @@ agenda:
     past_per_page: 24
     timezone: Europe/Berlin     # a new date's, and an imported one's that names none
     calendar_name: ~            # the feed's name; ~: the site's title (base.settings.title)
-    jsonld: true                # a schema.org MusicEvent on each date's page
+    jsonld: true                # a schema.org event on each date's page
+    jsonld_type: MusicEvent     # its type: MusicEvent (a masterclass: EducationEvent), EducationEvent, Event
     show_past: true             # the past dates, folded under the ones to come
 ```
 

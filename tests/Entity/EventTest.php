@@ -128,6 +128,25 @@ final class EventTest extends TestCase
         $this->assertArrayNotHasKey('image', $data);
     }
 
+    /** A lecturer's site: every date an EducationEvent, its programme the talks' titles as written. */
+    public function testTheJsonLdTypeIsTheSites(): void
+    {
+        $event = TestEvent::at('2016-03-04 09:00', 'America/New_York', 'VCTM Annual Conference');
+        $event->setRole('masterclass');
+        $event->setEnsemble('Virginia Council of Teachers of Mathematics');
+        $event->setProgramme("The Beauty of Mathematics\nTeaching Fractions with Meaning: a workshop");
+
+        $data = (new JsonLd(JsonLd::EDUCATION_EVENT))->for($event, null, null, 'Monica Neagoy');
+        $this->assertSame('EducationEvent', $data['@type']);
+        $this->assertSame([['@type' => 'CreativeWork', 'name' => 'The Beauty of Mathematics'], ['@type' => 'CreativeWork', 'name' => 'Teaching Fractions with Meaning: a workshop']], $data['workPerformed']);
+        $this->assertSame('PerformingGroup', $data['performer'][1]['@type']);
+
+        $this->assertSame('Event', (new JsonLd(JsonLd::EVENT))->for($event)['@type']);
+        // A musician's masterclass stays an EducationEvent; an unknown type falls back to MusicEvent.
+        $this->assertSame('EducationEvent', (new JsonLd())->for($event)['@type']);
+        $this->assertSame('MusicEvent', (new JsonLd('Concert'))->getType());
+    }
+
     public function testTodayTonightAndOnStageAreReadInTheVenuesTimezone(): void
     {
         $event = new TestEvent();
