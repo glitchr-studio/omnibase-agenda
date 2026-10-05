@@ -2,7 +2,6 @@
 
 namespace Base\Agenda\Tests\Controller\Admin;
 
-use Base\Admin\Attribute\OpenToAdmins;
 use Base\Admin\Config\Action;
 use Base\Admin\Config\Actions;
 use Base\Admin\Config\Crud;
@@ -36,7 +35,7 @@ final class OpenToAdminsTest extends KernelTestCase
         if (!class_exists($_SERVER['KERNEL_CLASS'])) {
             self::markTestSkipped('Needs a host application (its kernel).');
         }
-        if (!class_exists(OpenToAdmins::class)) {
+        if (!method_exists(Actions::class, 'openTo')) {
             self::markTestSkipped('Needs an omnibase/admin that has #[OpenToAdmins]: before it, these screens are the super-admin\'s.');
         }
 

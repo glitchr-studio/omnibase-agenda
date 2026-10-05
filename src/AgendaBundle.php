@@ -2,6 +2,8 @@
 
 namespace Base\Agenda;
 
+use Base\Admin\Attribute\OpenToAdmins;
+use Base\Admin\Controller\AbstractCrudController;
 use Base\Bundle\AbstractBaseBundle;
 use Base\Traits\SingletonTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -17,6 +19,13 @@ class AgendaBundle extends AbstractBaseBundle
     public function __construct()
     {
         parent::__construct();
+
+        // The CRUD controllers carry omnibase/admin's #[OpenToAdmins]: an
+        // omnibase/admin that does not have it yet gets a stand-in of the
+        // same name, which opens nothing (compat/OpenToAdmins.php says why).
+        if (class_exists(AbstractCrudController::class) && !class_exists(OpenToAdmins::class)) {
+            require_once \dirname(__DIR__).'/compat/OpenToAdmins.php';
+        }
     }
 
     /** Modern layout: the class lives in src/, the bundle root is the package root. */
