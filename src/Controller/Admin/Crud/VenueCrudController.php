@@ -2,6 +2,7 @@
 
 namespace Base\Agenda\Controller\Admin\Crud;
 
+use Base\Admin\Attribute\OpenToAdmins;
 use Base\Admin\Config\Crud;
 use Base\Admin\Controller\AbstractCrudController;
 use Base\Admin\Filter\Filters;
@@ -16,6 +17,7 @@ use Base\Field\TextField;
  * The importer opens one for each new LOCATION it reads - with the name
  * and the town only: the address, the map and the site are completed here.
  */
+#[OpenToAdmins]
 class VenueCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string

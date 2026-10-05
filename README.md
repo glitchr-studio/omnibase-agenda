@@ -271,10 +271,21 @@ page (`Controller\Admin\CalendarController`) and a dashboard widget,
 `agenda_upcoming`, with the next five dates. When omnibase/newsletter is
 installed, `Digest\AgendaDigestSource` puts the coming dates in its digest.
 
+The two CRUDs are written by the site's administrator (`ROLE_ADMIN`), not by
+the super-admin only: they carry omnibase/admin's `#[OpenToAdmins]` -
+creating, editing, deleting, and the dates' own `duplicate` and `sync`. The
+attribute needs an omnibase/admin that has it (main from 7474f85); on an
+older one it is ignored and the screens are the super-admin's to write, as
+they were.
+
 ## Tests
 
 `vendor/bin/phpunit`: unit tests of the ICS writer and reader, the Google
 link, the JSON-LD, the JSON feed (written and read back), the description
 reader (fr/en/de), the Squarespace reader (on a real excerpt,
 `tests/Fixtures/squarespace.json`) and the Event's own rules. The bundle does not boot alone,
-so none of them needs a kernel.
+so none of them needs a kernel - but `tests/Controller/Admin/OpenToAdminsTest`
+(an administrator writes in the back office, a plain user does not), which
+runs inside a host application
+(`php vendor/bin/phpunit -c vendor/omnibase/agenda/phpunit.xml.dist`) and is
+skipped elsewhere.

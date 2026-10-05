@@ -3,6 +3,7 @@
 namespace Base\Agenda\Controller\Admin\Crud;
 
 use Base\Admin\Attribute\AdminAction;
+use Base\Admin\Attribute\OpenToAdmins;
 use Base\Admin\Config\Action;
 use Base\Admin\Config\Actions;
 use Base\Admin\Config\Crud;
@@ -34,6 +35,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * ticked - then only its hours and its cancellation follow. Two buttons on
  * top: duplicate a date (the next one of a tour) and read the calendars now.
  */
+#[OpenToAdmins(actions: ['duplicate', 'sync'])]
 class EventCrudController extends AbstractCrudController
 {
     private IcsImporter $importer;
