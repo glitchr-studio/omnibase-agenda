@@ -274,11 +274,7 @@ installed, `Digest\AgendaDigestSource` puts the coming dates in its digest.
 The two CRUDs are written by the site's administrator (`ROLE_ADMIN`), not by
 the super-admin only: they carry omnibase/admin's `#[OpenToAdmins]` -
 creating, editing, deleting, and the dates' own `duplicate` and `sync`. The
-attribute needs an omnibase/admin that has it (main from 7474f85); on an
-older one the bundle declares a stand-in of that name (`compat/OpenToAdmins.php`:
-omnibase instantiates every attribute of a controller, and a class that does
-not exist stopped the site), nothing applies it and the screens are the
-super-admin's to write, as they were.
+attribute is omnibase/admin's from 7474f85.
 
 ## Tests
 
