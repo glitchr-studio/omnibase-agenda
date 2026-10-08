@@ -287,3 +287,7 @@ so none of them needs a kernel - but `tests/Controller/Admin/OpenToAdminsTest`
 runs inside a host application
 (`php vendor/bin/phpunit -c vendor/omnibase/agenda/phpunit.xml.dist`) and is
 skipped elsewhere.
+
+## License
+
+MIT since 2026-10-09; earlier versions remain published under LGPL-3.0-or-later.
