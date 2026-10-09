@@ -12,7 +12,9 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
  * kept, texts unescaped; a DTSTART with a TZID is read in that timezone, a
  * VALUE=DATE as a day, a trailing Z as UTC, a bare hour in the calendar's
  * X-WR-TIMEZONE (else the default given). A repeating entry gives its first
- * occurrence only. No Doctrine here: Service\IcsImporter does the rest.
+ * occurrence only - the occurrences changed by hand (RECURRENCE-ID, under
+ * the series' UID) never in its place. No Doctrine here:
+ * Service\IcsImporter does the rest.
  */
 final class IcsParser
 {
@@ -25,6 +27,9 @@ final class IcsParser
     {
         $calendarTimezone = $this->defaultTimezone;
         $events = [];
+        // One occurrence of a series, changed by hand (RECURRENCE-ID): Google
+        // writes it under the series' own UID, and often before the series.
+        $occurrences = [];
         $block = null;
         $depth = 0;
 
@@ -43,7 +48,11 @@ final class IcsParser
             if ('END' === $name) {
                 if (null !== $block && 'VEVENT' === strtoupper($value) && 0 === $depth) {
                     if ($event = $this->event($block, $calendarTimezone)) {
-                        $events[] = $event;
+                        if (isset($block['RECURRENCE-ID'])) {
+                            $occurrences[] = [$event, trim($block['RECURRENCE-ID']['value'])];
+                        } else {
+                            $events[] = $event;
+                        }
                     }
                     $block = null;
                 } elseif (null !== $block) {
@@ -61,6 +70,16 @@ final class IcsParser
             if (0 === $depth) {
                 // The first of each property wins (a second DESCRIPTION is a mistake).
                 $block[$name] ??= ['params' => $params, 'value' => $value];
+            }
+        }
+
+        // A series is read as its first occurrence, whatever the order of the
+        // file: the occurrences changed by hand do not stand in for it. One
+        // whose series is not in the file is a date of its own.
+        $series = array_flip(array_map(fn (ParsedEvent $event) => $event->uid, $events));
+        foreach ($occurrences as [$event, $at]) {
+            if (!isset($series[$event->uid])) {
+                $events[] = $event->with(['uid' => $event->uid.'#'.$at]);
             }
         }
 

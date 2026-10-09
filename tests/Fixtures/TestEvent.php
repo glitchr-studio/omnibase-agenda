@@ -38,6 +38,11 @@ class TestEvent extends Event
     }
 
     public function getId(): ?int { return $this->testId; }
+
+    /** The cover without the storage (Uploader asks the kernel where it is): the address given here. */
+    public ?string $testCoverUrl = null;
+    public function hasCover(): bool { return null !== $this->testCoverUrl; }
+    public function getCoverUrl(): ?string { return $this->testCoverUrl; }
     public function getUpdatedAt(): ?\DateTimeInterface { return $this->testUpdatedAt; }
 
     public function getTitle(?string $locale = null, int $inheritanceDepthIfNotSet = 0): ?string { return $this->testTitle; }

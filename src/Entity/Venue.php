@@ -92,7 +92,11 @@ class Venue
         return '' !== $slug ? $slug : 'venue';
     }
 
-    /** The slug is given once, when the venue is first saved: "-2" when another house has it. */
+    /**
+     * The slug is given once, when the venue is first saved: "-2" when another
+     * house has it - one already saved, or one waiting to be with this one (a
+     * calendar read opens many at once: "Bogota" and "Bogotá" make one slug).
+     */
     #[ORM\PrePersist]
     public function giveSlug(PrePersistEventArgs $event): void
     {
@@ -100,9 +104,16 @@ class Venue
             return;
         }
         $base = self::slugify($this->name, $this->city);
-        $repository = $event->getObjectManager()->getRepository(self::class);
+        $manager = $event->getObjectManager();
+        $repository = $manager->getRepository(self::class);
+        $waiting = [];
+        foreach ($manager->getUnitOfWork()->getScheduledEntityInsertions() as $other) {
+            if ($other instanceof self && $other !== $this && $other->slug) {
+                $waiting[$other->slug] = true;
+            }
+        }
         $slug = $base;
-        for ($i = 2; $repository->findOneBy(['slug' => $slug]); ++$i) {
+        for ($i = 2; isset($waiting[$slug]) || $repository->findOneBy(['slug' => $slug]); ++$i) {
             $slug = $base.'-'.$i;
         }
         $this->slug = $slug;

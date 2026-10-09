@@ -63,6 +63,27 @@ final class IcsParserTest extends TestCase
         $this->assertSame('utc-event@example.org', $event->uid);
     }
 
+    public function testASeriesIsItsFirstOccurrenceWhereverItsChangedOnesStand(): void
+    {
+        // As Google Calendar writes it: the occurrence moved by hand first, under the series' UID, the series after.
+        $ics = implode("\r\n", [
+            'BEGIN:VCALENDAR', 'X-WR-TIMEZONE:Etc/GMT',
+            'BEGIN:VEVENT', 'DTSTART;TZID=Europe/Moscow:20180515T190000', 'DTEND;TZID=Europe/Moscow:20180515T210000', 'RECURRENCE-ID;TZID=Europe/Moscow:20180508T190000', 'UID:series@google.com', 'SUMMARY:Moved', 'END:VEVENT',
+            'BEGIN:VEVENT', 'DTSTART;TZID=Europe/Moscow:20180410T190000', 'DTEND;TZID=Europe/Moscow:20180410T210000', 'RRULE:FREQ=WEEKLY;BYDAY=TU', 'UID:series@google.com', 'SUMMARY:Every Tuesday', 'END:VEVENT',
+            'BEGIN:VEVENT', 'DTSTART:20180601T170000Z', 'RECURRENCE-ID:20180525T170000Z', 'UID:elsewhere@google.com', 'SUMMARY:Its series is not in the file', 'END:VEVENT',
+            'END:VCALENDAR',
+        ]);
+        $events = (new IcsParser('Europe/Paris'))->parse($ics);
+
+        $this->assertCount(2, $events);
+        $this->assertSame('series@google.com', $events[0]->uid);
+        $this->assertSame('Every Tuesday', $events[0]->summary);
+        $this->assertTrue($events[0]->recurring);
+        $this->assertSame('2018-04-10T19:00:00+03:00', $events[0]->start->format('c'));
+        $this->assertSame('elsewhere@google.com#20180525T170000Z', $events[1]->uid, 'a date of its own');
+        $this->assertSame('Etc/GMT', $events[1]->timezone, "the calendar's");
+    }
+
     public function testParametersAndQuotedColons(): void
     {
         $this->assertSame(

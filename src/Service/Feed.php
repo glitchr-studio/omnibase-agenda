@@ -72,7 +72,7 @@ final class Feed
             'programme' => $event->getProgrammeLines(),
             'tickets' => $event->getTicketsUrl(),
             'eventUrl' => $event->getEventUrl(),
-            'image' => $this->absolute($event->getCoverUrl()),
+            'image' => $this->cover($event),
             'venue' => $this->venue($event->getVenue()),
             'updatedAt' => $event->getUpdatedAt() ? \DateTimeImmutable::createFromInterface($event->getUpdatedAt())->setTimezone(new \DateTimeZone('UTC'))->format(\DATE_ATOM) : null,
         ];
@@ -92,6 +92,29 @@ final class Feed
             'longitude' => $venue->getLongitude(),
             'map' => $venue->getMapLink(),
         ] : null;
+    }
+
+    /**
+     * The cover's address for whoever reads it from elsewhere (this feed, the
+     * JSON-LD, a sister site's importer): /agenda/{slug}/cover, which says
+     * what kind of picture it is. The storage keeps an upload under a bare
+     * identifier, so the web server alone sends it as
+     * application/octet-stream - a browser's <img> copes, a reader that
+     * checks the type does not. A cover kept elsewhere (an address) stays
+     * as it is.
+     */
+    public function cover(Event $event): ?string
+    {
+        if (!$event->hasCover()) {
+            return null;
+        }
+        $path = $event->getCoverUrl();
+        if (\is_string($path) && preg_match('#^(?:https?:)?//#i', $path)) {
+            return $path;
+        }
+        $slug = $event->getSlug();
+
+        return ($slug ? $this->url('agenda_event_cover', ['slug' => $slug]) : null) ?? $this->absolute($path);
     }
 
     /** A path of the site made absolute on the address the request came to; an address stays as it is. */

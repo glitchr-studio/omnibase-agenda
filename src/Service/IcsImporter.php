@@ -394,7 +394,8 @@ final class IcsImporter
         }
         $name = mb_substr(trim($place['name']), 0, 180);
         $city = isset($place['city']) && '' !== trim((string) $place['city']) ? mb_substr(trim($place['city']), 0, 120) : null;
-        $key = mb_strtolower($name.'|'.$city);
+        // One house under the spellings a calendar gives it ("Bogota", "Bogotá"), as the database's own comparison would have it.
+        $key = Venue::slugify($name, null).'|'.(null !== $city ? Venue::slugify($city, null) : '');
 
         return $this->venues[$key] ??= $this->venueRepository->findOneByNameAndCity($name, $city)
             ?? $this->openVenue(['name' => $name, 'city' => $city] + $place);
@@ -424,11 +425,16 @@ final class IcsImporter
         try {
             $response = $this->http->request('GET', $image, ['timeout' => 20, 'max_duration' => 60]);
             $type = strtolower($response->getHeaders()['content-type'][0] ?? '');
-            if (!str_starts_with($type, 'image/')) {
-                return;
-            }
             $content = $response->getContent();
             if ('' === $content || \strlen($content) > self::IMAGE_MAX_BYTES) {
+                return;
+            }
+            // A server that does not say what it sends (application/octet-stream
+            // for a file without an extension): the picture says it itself.
+            if (!str_starts_with($type, 'image/')) {
+                $type = strtolower((string) (new \finfo(\FILEINFO_MIME_TYPE))->buffer($content));
+            }
+            if (!str_starts_with($type, 'image/')) {
                 return;
             }
             $extension = match (true) {

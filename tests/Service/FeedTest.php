@@ -9,6 +9,8 @@ use Base\Agenda\Service\FeedParser;
 use Base\Agenda\Service\Ics;
 use Base\Agenda\Tests\Fixtures\TestEvent;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\RequestContext;
 
 final class FeedTest extends TestCase
 {
@@ -52,6 +54,27 @@ final class FeedTest extends TestCase
             'id', 'slug', 'url', 'ics', 'title', 'start', 'end', 'timezone', 'allDay', 'cancelled', 'role', 'roleLabel', 'ensemble',
             'conductor', 'performers', 'programme', 'tickets', 'eventUrl', 'image', 'venue', 'updatedAt',
         ], array_keys($data));
+    }
+
+    public function testTheCoverIsGivenAtTheAddressThatSaysItsType(): void
+    {
+        $urls = $this->createStub(UrlGeneratorInterface::class);
+        $urls->method('generate')->willReturnCallback(fn (string $route, array $parameters = []) => 'https://anna.example/'.$route.'/'.implode('/', $parameters));
+        $urls->method('getContext')->willReturn(new RequestContext('', 'GET', 'anna.example', 'https'));
+        $feed = new Feed(new Ics(), $urls);
+
+        $event = $this->concert();
+        $this->assertNull($feed->cover($event), 'no cover');
+        // An upload: the storage keeps it without an extension, the web server would say application/octet-stream.
+        $event->testCoverUrl = '/uploads/_/event/_cover/611f3913-0e07-494a-8147-1e76ef0da8ee';
+        $this->assertSame('https://anna.example/agenda_event_cover/a-concert', $feed->cover($event));
+        $this->assertSame($feed->cover($event), $feed->event($event)['image']);
+        // Kept elsewhere: its own address.
+        $event->testCoverUrl = 'https://cdn.example/cover.jpg';
+        $this->assertSame('https://cdn.example/cover.jpg', $feed->cover($event));
+        // No router (a host without the route): the file's address, absolute at best.
+        $event->testCoverUrl = '/uploads/a';
+        $this->assertSame('/uploads/a', (new Feed(new Ics()))->cover($event));
     }
 
     public function testTheDocument(): void

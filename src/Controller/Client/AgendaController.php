@@ -12,6 +12,8 @@ use Base\Attributes\Attribute\Sitemap;
 use Base\Service\SettingBagInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -111,6 +113,32 @@ class AgendaController extends AbstractController
         return $this->calendar($this->ics->calendar([$event], (string) $event->getTitle()), $slug.'.ics');
     }
 
+    /**
+     * A date's cover, said to be the picture it is (image/jpeg, image/png…):
+     * the address the feed and the JSON-LD give (Service\Feed::cover). The
+     * page's own <img> keeps the file's address, served without PHP.
+     */
+    #[Route('/agenda/{slug}/cover', name: 'agenda_event_cover', requirements: ['slug' => '[a-z0-9\-]+'], methods: ['GET', 'HEAD'])]
+    public function cover(Request $request, string $slug): Response
+    {
+        $event = $this->find($slug);
+        $file = $event->hasCover() ? $event->getCoverFile() : null;
+        $type = $file instanceof File && $file->isFile() ? (string) $file->getMimeType() : '';
+        if (!str_starts_with($type, 'image/')) {
+            throw $this->createNotFoundException(sprintf('No cover for "%s".', $slug));
+        }
+        $response = new BinaryFileResponse($file, Response::HTTP_OK, [
+            'Content-Type' => $type,
+            'Access-Control-Allow-Origin' => '*',
+            // omnibase's session would turn the response private: it reads none.
+            AbstractSessionListener::NO_AUTO_CACHE_CONTROL_HEADER => 'true',
+        ], true, null, true, true);
+        $response->setMaxAge(86400);
+        $response->isNotModified($request);
+
+        return $response;
+    }
+
     #[Sitemap(priority: 0.6, changefreq: 'weekly')]
     #[Route('/agenda/{slug}', name: 'agenda_event', requirements: ['slug' => '[a-z0-9\-]+'])]
     public function event(Request $request, string $slug): Response
@@ -118,11 +146,10 @@ class AgendaController extends AbstractController
         $event = $this->find($slug);
         $jsonLd = null;
         if ($this->withJsonLd) {
-            $cover = $event->getCoverUrl();
             $jsonLd = $this->jsonLd->for(
                 $event,
                 $this->generateUrl('agenda_event', ['slug' => $slug], UrlGeneratorInterface::ABSOLUTE_URL),
-                $cover ? (preg_match('#^https?://#', $cover) ? $cover : $request->getSchemeAndHttpHost().'/'.ltrim($cover, '/')) : null,
+                $this->feed->cover($event),
                 $this->siteTitle(),
             );
         }
