@@ -1,0 +1,9 @@
+# The names of omnibase/agenda's entities, which omnibase/admin titles its screens with
+# (the en of /admin/events, /admin/venues).
+agenda:
+  event:
+    _singular: "date"
+    _plural: "dates"
+  venue:
+    _singular: "venue"
+    _plural: "venues"

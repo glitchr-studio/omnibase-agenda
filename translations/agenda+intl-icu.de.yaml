@@ -42,6 +42,13 @@ role:
   other: "Sonstiges"
 
 admin:
+  # The back office's menu and dashboard, for a site's DashboardController: '@agenda.admin.menu.events'...
+  menu:
+    section: "Termine"
+    events: "Termine"
+    venues: "Spielorte"
+    calendar: "Google Kalender"
+    upcoming: "Nächste Termine"
   event:
     title: "Titel"
     starts_at: "Beginn"
